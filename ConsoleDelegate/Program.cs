@@ -53,7 +53,27 @@ namespace ConsoleDelegate
         }
         static void Main(string[] args)
         {
-            Program p = new Program();
+
+			//Different Type Generics List
+			List<List<object>> list = new List<List<object>>();
+
+			List<object> list1 = new List<object>();
+			list1.Add(1001); list1.Add(1002); list1.Add(1003);
+			list.Add(list1);
+
+			List<object> list2 = new List<object>();
+			list1.Add("Sujay"); list1.Add("Adkar"); list1.Add("Sanjay");
+			list.Add(list2);
+
+			foreach(List<object> objectList in list)
+			{
+				foreach(var obj in objectList)
+				{
+					Console.WriteLine(obj);
+				}
+				Console.WriteLine();
+			}
+			Program p = new Program();
             NumberChange nc;
             NumberChange nc1 = new NumberChange(AddNumber);
             NumberChange nc2 = new NumberChange(p.MultiplyNumber);
