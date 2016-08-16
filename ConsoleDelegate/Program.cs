@@ -44,14 +44,20 @@ namespace ConsoleDelegate
         public static void SendString(PrintString ps)
         {
             ps("Hello Word");
-        } 
+        }
+        
+        private static bool IsDate(string date)
+        {
+            DateTime dt;
+            return DateTime.TryParse(date, out dt);
+        }
         static void Main(string[] args)
         {
             Program p = new Program();
             NumberChange nc;
             NumberChange nc1 = new NumberChange(AddNumber);
             NumberChange nc2 = new NumberChange(p.MultiplyNumber);
-
+            //multicast delegate
             nc = nc1;
             nc += nc2;
             Console.WriteLine("Addition is " + nc(10, 20));
@@ -66,6 +72,7 @@ namespace ConsoleDelegate
 
             MyDelegate md1, md2, md3,md4;
 
+            //MultiCast Delegate
             md1 = new MyDelegate(Hello);
             md2 = new MyDelegate(GoodBye);
             md3 = md1 + md2;
@@ -112,7 +119,18 @@ namespace ConsoleDelegate
             Number num = delegate (int x)
             {
                 Console.WriteLine("Annoymous number {0}", x);
-            };            
+            };
+            //Generic Delegate
+            string date = "05/12/2013";
+            Predicate<string> checkDate = d => IsDate(date);
+            if(checkDate(date))
+            {
+                Console.WriteLine("Valid Date");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Date");
+            }
             Console.ReadLine();
         }
     }
@@ -140,6 +158,7 @@ namespace ConsoleDelegate
         }
 
         delegate double CalcualteSimpleInterest(double param1, double param2, double param3);
+
 
     }
 }
