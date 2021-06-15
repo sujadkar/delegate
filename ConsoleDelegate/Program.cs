@@ -19,6 +19,14 @@ namespace ConsoleDelegate
         {
             return (a * b);
         }
+        public int MultiplyNumber1(int a, int b)
+        {
+            return (a * b);
+        }
+        public int MultiplyNumber2(int a, int b)
+        {
+            return (a * b);
+        }
         delegate void Number(int x);
 
         delegate void MyDelegate(string str);
